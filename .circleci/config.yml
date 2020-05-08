@@ -33,7 +33,7 @@ jobs:
         - run:
            name: JAXB
            command: |
-             mkdir -p ~/target/generated-sources/jaxb/com/oliveiralucaspro/model/;
+             mkdir -p /home/circleci/repo/spring-mvc-rest-xml-model/target/generated-sources/jaxb/generated/;
            when: always
            
         - run: mvn install -Dskiptests
