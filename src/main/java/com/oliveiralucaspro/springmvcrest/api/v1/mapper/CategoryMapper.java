@@ -1,0 +1,15 @@
+package com.oliveiralucaspro.springmvcrest.api.v1.mapper;
+
+import org.mapstruct.Mapper;
+import org.mapstruct.factory.Mappers;
+
+import com.oliveiralucaspro.springmvcrest.api.v1.model.CategoryDTO;
+import com.oliveiralucaspro.springmvcrest.domain.Category;
+
+@Mapper
+public interface CategoryMapper {
+
+    CategoryMapper INSTANCE = Mappers.getMapper(CategoryMapper.class);
+
+    CategoryDTO categoryToCategoryDTO(Category category);
+}
