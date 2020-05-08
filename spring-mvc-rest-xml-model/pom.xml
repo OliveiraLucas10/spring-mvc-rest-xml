@@ -29,7 +29,6 @@
                 </executions>
                 <configuration>
                     <!-- The package of your generated sources -->
-                    <packageName>com.oliveiralucaspro.model</packageName>
                     <sources>
                         <source>${project.basedir}/src/main/resources/xsd</source>
                     </sources>
