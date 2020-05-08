@@ -31,7 +31,7 @@
                     <!-- The package of your generated sources -->
                     <packageName>com.oliveiralucaspro.model</packageName>
                     <sources>
-                        <source>src/main/resources/xsd</source>
+                        <source>${project.basedir}/src/main/resources/xsd</source>
                     </sources>
                 </configuration>
             </plugin>

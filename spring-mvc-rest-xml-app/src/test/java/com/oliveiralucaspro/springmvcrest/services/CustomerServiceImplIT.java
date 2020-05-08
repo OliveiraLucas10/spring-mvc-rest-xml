@@ -13,8 +13,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
+import com.oliveiralucaspro.model.CustomerDTO;
 import com.oliveiralucaspro.springmvcrest.api.v1.mapper.CustomerMapper;
-import com.oliveiralucaspro.springmvcrest.api.v1.model.CustomerDTO;
 import com.oliveiralucaspro.springmvcrest.bootstrap.Bootstrap;
 import com.oliveiralucaspro.springmvcrest.domain.Customer;
 import com.oliveiralucaspro.springmvcrest.repositories.CategoryRepository;

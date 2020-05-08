@@ -26,7 +26,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import com.oliveiralucaspro.springmvcrest.api.v1.model.CustomerDTO;
+import com.oliveiralucaspro.model.CustomerDTO;
 import com.oliveiralucaspro.springmvcrest.controllers.RestResponseEntityExceptionHandler;
 import com.oliveiralucaspro.springmvcrest.services.CustomerService;
 import com.oliveiralucaspro.springmvcrest.services.ResourceNotFoundException;
@@ -100,13 +100,17 @@ class CustomerControllerTest extends AbstractRestControllerTest {
 	returnDTO.setLastName(customer.getLastName());
 	returnDTO.setCustomerUrl(CUSTOMER_URL_1);
 
-	when(customerService.createNewCustomer(customer)).thenReturn(returnDTO);
+	when(customerService.createNewCustomer(any(CustomerDTO.class))).thenReturn(returnDTO);
 
 	// when/then
-	mockMvc.perform(post(CustomerController.BASE_URL).accept(MediaType.APPLICATION_JSON)
-		.contentType(MediaType.APPLICATION_JSON).content(asJsonString(customer)))
-		.andExpect(status().isCreated()).andExpect(jsonPath("$.firstName", equalTo(FIRST_NAME)))
-		.andExpect(jsonPath("$.customer_url", equalTo(CUSTOMER_URL_1)));
+	mockMvc.perform(post(CustomerController.BASE_URL)
+		.accept(MediaType.APPLICATION_JSON)
+		.contentType(MediaType.APPLICATION_JSON)
+		.content(asJsonString(customer)))
+		.andExpect(status().isCreated())
+		.andExpect(jsonPath("$.firstName", equalTo(FIRST_NAME)))
+		.andExpect(jsonPath("$.lastName", equalTo(LAST_NAME)))
+		.andExpect(jsonPath("$.customerUrl", equalTo(CUSTOMER_URL_1)));
     }
 
     @Test
@@ -125,10 +129,12 @@ class CustomerControllerTest extends AbstractRestControllerTest {
 
 	// when/then
 	mockMvc.perform(put(CustomerController.BASE_URL + "/1").accept(MediaType.APPLICATION_JSON)
-		.contentType(MediaType.APPLICATION_JSON).content(asJsonString(customer))).andExpect(status().isOk())
+		.contentType(MediaType.APPLICATION_JSON)
+		.content(asJsonString(customer)))
+		.andExpect(status().isOk())
 		.andExpect(jsonPath("$.firstName", equalTo(FIRST_NAME)))
 		.andExpect(jsonPath("$.lastName", equalTo(LAST_NAME)))
-		.andExpect(jsonPath("$.customer_url", equalTo(CUSTOMER_URL_1)));
+		.andExpect(jsonPath("$.customerUrl", equalTo(CUSTOMER_URL_1)));
     }
 
     @Test
@@ -149,7 +155,7 @@ class CustomerControllerTest extends AbstractRestControllerTest {
 		.contentType(MediaType.APPLICATION_JSON).content(asJsonString(customer))).andExpect(status().isOk())
 		.andExpect(jsonPath("$.firstName", equalTo(FIRST_NAME)))
 		.andExpect(jsonPath("$.lastName", equalTo(LAST_NAME)))
-		.andExpect(jsonPath("$.customer_url", equalTo(CUSTOMER_URL_1)));
+		.andExpect(jsonPath("$.customerUrl", equalTo(CUSTOMER_URL_1)));
     }
 
     @Test

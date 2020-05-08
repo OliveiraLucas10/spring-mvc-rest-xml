@@ -16,8 +16,8 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import com.oliveiralucaspro.model.CustomerDTO;
 import com.oliveiralucaspro.springmvcrest.api.v1.mapper.CustomerMapper;
-import com.oliveiralucaspro.springmvcrest.api.v1.model.CustomerDTO;
 import com.oliveiralucaspro.springmvcrest.domain.Customer;
 import com.oliveiralucaspro.springmvcrest.repositories.CustomerRepository;
 

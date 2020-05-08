@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.oliveiralucaspro.springmvcrest.api.v1.model.CustomerDTO;
-import com.oliveiralucaspro.springmvcrest.api.v1.model.CustomerListDTO;
+import com.oliveiralucaspro.model.CustomerDTO;
+import com.oliveiralucaspro.model.CustomerListDTO;
 import com.oliveiralucaspro.springmvcrest.services.CustomerService;
 
 import lombok.RequiredArgsConstructor;
@@ -29,7 +29,9 @@ public class CustomerController {
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public CustomerListDTO getListOfCustomers() {
-	return new CustomerListDTO(customerService.getAllCustomers());
+	CustomerListDTO customerListDTO = new CustomerListDTO();
+	customerListDTO.getCustomers().addAll(customerService.getAllCustomers());
+	return customerListDTO;
     }
 
     @GetMapping({ "/{id}" })

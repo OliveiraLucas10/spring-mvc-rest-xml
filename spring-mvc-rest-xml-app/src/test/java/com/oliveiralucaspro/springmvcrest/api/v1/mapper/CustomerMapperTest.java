@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-import com.oliveiralucaspro.springmvcrest.api.v1.model.CustomerDTO;
+import com.oliveiralucaspro.model.CustomerDTO;
 import com.oliveiralucaspro.springmvcrest.domain.Customer;
 
 class CustomerMapperTest {
