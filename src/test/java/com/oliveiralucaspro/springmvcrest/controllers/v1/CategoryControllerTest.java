@@ -60,7 +60,9 @@ class CategoryControllerTest {
 
 	when(categoryService.getAllCategories()).thenReturn(categories);
 
-	mockMvc.perform(get(CategoryController.BASE_URL).contentType(MediaType.APPLICATION_JSON))
+	mockMvc.perform(get(CategoryController.BASE_URL)
+		.accept(MediaType.APPLICATION_JSON)
+		.contentType(MediaType.APPLICATION_JSON))
 		.andExpect(status().isOk()).andExpect(jsonPath("$.categories", hasSize(2)));
 
     }
@@ -73,7 +75,7 @@ class CategoryControllerTest {
 
 	when(categoryService.getCategoryByName(anyString())).thenReturn(categoryDTO1);
 
-	mockMvc.perform(get(CategoryController.BASE_URL + "/Jim").contentType(MediaType.APPLICATION_JSON))
+	mockMvc.perform(get(CategoryController.BASE_URL + "/Jim").accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON))
 		.andExpect(status().isOk()).andExpect(jsonPath("$.name", equalTo(NAME)));
 
     }
@@ -83,7 +85,7 @@ class CategoryControllerTest {
 
 	when(categoryService.getCategoryByName(anyString())).thenThrow(ResourceNotFoundException.class);
 
-	mockMvc.perform(get(CategoryController.BASE_URL + "/Foo").contentType(MediaType.APPLICATION_JSON))
+	mockMvc.perform(get(CategoryController.BASE_URL + "/Foo").accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON))
 		.andExpect(status().isNotFound());
     }
 
