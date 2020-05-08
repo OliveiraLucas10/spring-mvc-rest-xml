@@ -12,13 +12,13 @@
   
   
   
-  
-  <build>
+    <!--</dependencies>-->
+    <build>
         <plugins>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>jaxb2-maven-plugin</artifactId>
-                <version>2.5.0</version>
+                <version>2.3.1</version>
                 <executions>
                     <execution>
                         <id>xjc</id>
@@ -29,13 +29,12 @@
                 </executions>
                 <configuration>
                     <!-- The package of your generated sources -->
+                    <packageName>com.oliveiralucaspro.model</packageName>
                     <sources>
-                        <source>${project.basedir}/src/main/resources/xsd</source>
+                        <source>src/main/resources/xsd</source>
                     </sources>
                 </configuration>
             </plugin>
         </plugins>
     </build>
-  
-  
 </project>
